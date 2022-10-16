@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <title>HTML Form to google sheet</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <div class="form-container">
+            <form method="post" name="dataSheet">
+
+                <div class="input-name">
+                    <i class="bi bi-person-fill lock"></i>
+                    <input type="text" placeholder="First Name" class="name" name="FirstName">
+
+                    <span>
+                        <i class="bi bi-person-fill lock"></i>
+                        <input type="text" placeholder="Last Name" class="name" name="LastName">
+                    </span>
+                </div>
+
+                <div class="input-name">
+                    <input type="radio" class="radio-button" name="Gender" value="Male">
+                    <label style="margin-right: 10px;" for="" class="opt">Male</label>
+
+                    <input type="radio" class="radio-button" name="Gender" value="Female">
+                    <label style="margin-right: 10px;" for="" class="opt">Female</label>
+                </div>
+
+                <div class="input-name">
+                    <i class="bi bi-person-fill lock"></i>
+                    <input type="text" placeholder="Father Name" class="name" name="FatherName">
+
+                    <span>
+                        <i class="bi bi-person-fill lock"></i>
+                        <input type="text" placeholder="Mother Name" class="name" name="MotherName">
+                    </span>
+                </div>
+
+                <div class="input-name">
+                    <i class="bi bi-telephone-fill lock"></i>
+                    <input type="tel" placeholder="Contact Number" required class="text-name" name="MobileNumber">
+                </div>
+
+                <div class="input-name">
+                    <i class="bi bi-envelope-fill lock"></i>
+                    <input type="email-" placeholder="Email" required class="text-name" name="Email">
+                </div>
+
+                <div class="input-name">
+                    <i class="bi bi-lock-fill lock"></i>
+                    <input type="password" required placeholder="Password" class="text-name" name="Password">
+                </div>
+
+                <div class="input-name">
+                    <i class="bi bi-lock-fill lock"></i>
+                    <input type="password" placeholder="Confirm Your Password" class="text-name">
+                </div>
+
+                <div class="input-name">
+                    <select class="degree" name="Degree">
+                        <option value="Not Select">Select your class</option>
+                        <option value="B.tech CS">B.tech CS</B></option>
+                        <option value="B.tech Civil">B.tech Civil</option>
+                        <option value="B.tech EE">B.tech EE</option>
+                        <option value="B.tech ECE">B.tech ECE</option>
+                        <option value="B.tech IT">B.tech IT</option>
+                        <option value="BSC AG">BSC AG</option>
+                        <option value="BA">BA</option>
+                        <option value="BSC">BSC</option>
+                        <option value="XII">XII</option>
+                        <option value="X">X</option>
+                    </select>
+
+                    <div class="arrow"></div>
+
+                </div>
+
+                <div class="input-name">
+                    <input id="cb" type="checkbox" class="check-button">
+                    <label class="check" for="cb">I accept  all terms and conditions for Internship</label>
+                </div>
+
+                <div class="input-name">
+                    <input type="submit" class="button" value="submit">
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+     <script>
+        const datasheeturl = 'https://script.google.com/macros/s/AKfycbzs-CH0aeT3OHjPilC9d7bqMHjTJ1NsmAHUNoX52V3Qahm6pLEn4aAA_5QnoTtv35XTkA/exec'
+
+        const form = document.forms['dataSheet']
+
+        form.addEventListener('submit' , e =>{
+        e.preventDefault()
+        fetch(datasheeturl,{method:'POST',body:new FormData(form)})
+        .then(response => alert("Thanks for contacting us...!"))
+        .catch(error => console.error('Something went wrong',error.message))
+         })
+     </script>
+</body>
+</html>
